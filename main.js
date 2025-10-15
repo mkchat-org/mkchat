@@ -499,7 +499,7 @@ app.ws("/moderation", {
     },
     drain: ws => {
         console.log(`WebSocket backpressure: ${ws.getBufferedAmount()}`);
-        // not handling backpressue because im lazy lmfao   
+        // not handling backpressue because im lazy lmfao
     },
     close: async (ws, _code, _msg) => {
         moderators.delete(ws.id);

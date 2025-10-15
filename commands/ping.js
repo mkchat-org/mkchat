@@ -6,7 +6,7 @@ export default {
     },
     meta: {
         name: "ping",
-        aliases: [ "pong" ],
+        aliases: ["pong"],
         description: "Pings and pongs.",
         restricted: false
     }

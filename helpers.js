@@ -43,7 +43,7 @@ export function parseQuery(queryStr) {
 
 export function filterName(name) {
     if (!name) return "";
-    
+
     return removeHtml(name);
 };
 
@@ -60,7 +60,7 @@ export function filterMessage(message) {
 
 export function removeHtml(text) {
     if (!text) return "";
-    
+
     return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;").replace(/`/g, "&#x60;").replace(/\(/g, "&#40;").replace(/\)/g, "&#41;");
 };
 
@@ -144,7 +144,7 @@ export async function executeWebhook(url, message) {
 
 export async function logModAction(ip, action, details) {
     if (action !== "ban" && action !== "unban") throw new Error("Value of arguement 'action' is invalid!");
-    
+
     const embed = {
         color: action === "ban" ? config.discord.embedColorMatch.error : config.discord.embedColorMatch.info,
         timestamp: new Date().toISOString(),
@@ -158,7 +158,7 @@ export async function logModAction(ip, action, details) {
     };
 
     await executeWebhook(process.env["DISCORD_MODERATION_LOGGER"], {
-        embeds: [ embed ]
+        embeds: [embed]
     });
 };
 
@@ -191,7 +191,7 @@ export function getStickerUrl(sticker) {
         type: sticker.formatType < 3 ? 1 : 2
     };
 
-    switch(sticker.formatType) {
+    switch (sticker.formatType) {
         case 1:
             result.url = `${config.proxyServerUrl}/discord/stickers/${sticker.id}.webp`;
             break;
@@ -242,25 +242,25 @@ export async function checkBan(supabase, query) {
 export function parseEmoji(text) {
     const pattern = /&lt;(a:|:)[a-zA-Z0-9_-]*:[0-9]{18,19}&gt;/g;
     const emojis = text.match(pattern);
-      
+
     if (!emojis) return text;
 
-    for(const emoji of emojis) {
+    for (const emoji of emojis) {
         const id = emoji.match(/[0-9]{18,19}/g);
         const format = emoji.startsWith("&lt;a") ? "gif" : "png";
 
         text = text.replace(emoji, `<img class="discordEmoji" src="${config.proxyServerUrl}/discord/emojis/${id}.${format}" alt="discord emoji" style="height: 1.375em; width: 1.375em;" />`);
     };
-      
+
     return text;
 };
 
 export function attachmentParser(attachments) {
     if (!attachments) return "";
-    
-    const videoFormats = [ "mp4", "mov", "wmv", "ebm", "mkv", "m4v" ];
+
+    const videoFormats = ["mp4", "mov", "wmv", "ebm", "mkv", "m4v"];
     let result = "";
-    
+
     for (const attachment of attachments) {
         if (videoFormats.includes(attachment.url.slice(-3))) {
             result += `<video class="attachment" controls><source src="${attachment.url.replace('https://cdn.discordapp.com', config.proxyServerUrl + '/discord')}" /></video>`;
@@ -309,7 +309,7 @@ export function loadCommands() {
             };
         };
 
-        res([ commands, aliases ]);
+        res([commands, aliases]);
     });
 };
 
