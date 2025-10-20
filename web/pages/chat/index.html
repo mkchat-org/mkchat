@@ -5,8 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>💬 | MKChat</title>
     <script src="test.js" type="module"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
 </head>
 <body>
-    hey!
+    <div id="root">
+        <div id="sidebar">
+            <span id="sidebar-room-banner">#mkchatapp/main</span>
+            <div id="sidebar-room-users">
+                <div>
+                    <img src="https://api.dicebear.com/9.x/notionists-neutral/svg?seed=0c0c4d5e-5b09---{}&amp;backgroundColor=transparent" alt="avatar">
+                    <span>Person 0</span>
+                </div>
+                <div>
+                    <img src="https://api.dicebear.com/9.x/notionists-neutral/svg?seed=0c50c4d5e-5b09---{}&amp;backgroundColor=transparent" alt="avatar">
+                    <span>Person 1</span>
+                </div>
+                <div>
+                    <img src="https://api.dicebear.com/9.x/notionists-neutral/svg?seed=0c20c4d5e-5b09---{}&amp;backgroundColor=transparent" alt="avatar">
+                    <span>Person 2</span>
+                </div>
+            </div>
+        </div>
+        <div id="messagepane">
+            <div id="messagebox"></div>
+            <div id="messagecompose">
+                <!--<reply-banner></reply-banner>-->
+                <form>
+                    <button type="button">
+                        <span>⌘</span>
+                    </button>
+                    <input type="text" name="message-text" placeholder="Type a message..." />
+                    <button type="submit">
+                        <span>➤</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <!--<div class="absolute top-0 left-0 w-full h-full bg-zinc-950 p-6">
+            <upload-zone></upload-zone>
+        </div>-->
+    </div>
 </body>
 </html>

@@ -6,8 +6,8 @@
     "main": "main.js",
     "type": "module",
     "scripts": {
-        "start": "bun main.js",
-        "dev": "bun --hot main.js"
+        "start": "bun run main.js",
+        "dev": "bun --hot run main.js"
     },
     "dependencies": {
         "@std/msgpack": "npm:@jsr/std__msgpack"
