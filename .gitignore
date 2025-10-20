@@ -2,10 +2,13 @@
 node_modules
 
 # package-lock
-package-lock.json
+bun.lock
 
 #vscode settings
 .vscode
 
 #secrets 🤫
 .env
+
+#REMOVEME
+old_branch_leftovers
