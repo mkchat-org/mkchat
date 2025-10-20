@@ -33,6 +33,7 @@ const server = Bun.serve({
     routes: {
         "/": home,
         "/chat": chat,
+        "/icon.png": Bun.file("./web/icon.png")
     },
     websocket: {
         idleTimeout: 32, // (not sure we still need this) otherwise the client will disconnect for seemingly no reason every 2 minutes

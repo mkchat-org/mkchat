@@ -122,7 +122,7 @@ body,
 }
 
 #messagecompose {
-    min-height: calc(var(--spacing-unit) * 16);
+    min-height: calc(var(--spacing-unit) * 12);
     max-height: calc(var(--spacing-unit) * 32);
     height: fit-content;
     display: flex;
@@ -159,7 +159,7 @@ input {
 
 #messagecompose form button span {
     color: var(--color-stone-300);
-    padding: calc(var(--spacing-unit) * 5);
+    padding: calc(var(--spacing-unit) * 3);
     font-size: 1.5rem;
     line-height: calc(2 / 1.5);
 }
@@ -173,7 +173,22 @@ input {
     display: flex;
     flex-grow: 1;
     outline: none;
-    padding: calc(var(--spacing-unit) * 5);
+    padding: calc(var(--spacing-unit) * 3);
+    /* above the buttons so that outline is visible */
+    z-index: 1;
+    transition-property: all;
+    transition-duration: 150ms;
+    transition-timing-function: ease-in-out;
+}
+
+#messagecompose form input[type='text']:focus {
+    /*border: 1px solid rgba(255, 105, 0, 0.5);*/
+    outline-style: solid;
+    outline-width: 1px;
+    outline-color: rgba(142, 81, 255, 1);
+    outline-offset: -5px;
+    box-shadow:
+        inset 0 0 0 2px rgba(142, 81, 255, 0.35);
 }
 
 #messagecompose form button[type='submit'] {
