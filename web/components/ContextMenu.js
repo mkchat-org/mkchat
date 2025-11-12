@@ -1,16 +1,24 @@
-export type ContextMenuCoordinates = {
-    x: number;
-    y: number;
-};
+/**
+ * @typedef {object} ContextMenuCoordinates
+ * @property {number} x
+ * @property {number} y
+ */
 
 export class ContextMenu extends HTMLElement {
-    #coordinates: ContextMenuCoordinates;
+    /**
+     * @type {ContextMenuCoordinates}
+     */
+    #coordinates;
 
-    constructor(coordinates: ContextMenuCoordinates) {
+    /**
+     *
+     * @param {ContextMenuCoordinates} coordinates
+     */
+    constructor(coordinates) {
         super();
 
         // TODO: would probably make more sense to have this in the connectedCallback and ignore the 'this' instead of running at construction
-        for (const ctxEl of document.querySelectorAll<ContextMenu>("context-menu")) {
+        for (const ctxEl of document.querySelectorAll("context-menu")) {
             ctxEl.remove();
         };
 

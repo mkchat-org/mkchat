@@ -1,0 +1,17 @@
+{
+    "name": "mkchat-client",
+    "author": {
+        "name": "Nicholas Phillips",
+        "email": "hi@nick.rest"
+    },
+    "private": true,
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "peerDependencies": {
+        "typescript": "^5"
+    },
+    "dependencies": {
+        "hono": "^4.10.3"
+    }
+}

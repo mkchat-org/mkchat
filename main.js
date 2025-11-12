@@ -1,11 +1,13 @@
 import { randomUUIDv7 } from "bun";
-import { encode } from "@std/msgpack";
 import home from "./web/pages/home/index.html";
 import chat from "./web/pages/chat/index.html";
+
+const DEFAULT_PROTOCOL = "unstable-protocol";
 
 const server = Bun.serve({
     port: 3001,
     fetch(req, server) {
+        const protocols = req.headers.get("Sec-Websocket-Protocol").split(",").map(p => p.trim());
         const { searchParams } = new URL(req.url); // has to be stored/accessed prior to upgrade else will return blank struct
 
         // const remoteAddress = req.re;
@@ -15,6 +17,9 @@ const server = Bun.serve({
         // console.log(url.searchParams);
 
         const success = server.upgrade(req, {
+            // headers: {
+            //     "Sec-WebSocket-Protocol": "fake-protocol"
+            // },
             data: {
                 uuid,
                 alias,
@@ -33,7 +38,8 @@ const server = Bun.serve({
     routes: {
         "/": home,
         "/chat": chat,
-        "/icon.png": Bun.file("./web/icon.png")
+        "/icon.png": Bun.file("./web/static/icon.png"),
+        "/emoji.json": Bun.file("./web/static/emoji.json")
     },
     websocket: {
         idleTimeout: 32, // (not sure we still need this) otherwise the client will disconnect for seemingly no reason every 2 minutes
@@ -42,7 +48,7 @@ const server = Bun.serve({
         open(ws) {
             // const params = new URLSearchParams(req.url.slice(req.url.indexOf("?") + 1));
             console.log(ws.data);
-            ws.send(encode(`Your user id is ${randomUUIDv7()}`))
+            ws.send((`Your user id is ${randomUUIDv7()}`))
             // ws.id = nanoid(16);
 
             // users.set(ws.id, {
@@ -58,7 +64,7 @@ const server = Bun.serve({
             console.log(`Received ${message}`);
             // send back a message
             ws.send(`You said: ${message}`);
-            ws.send(encode(`You said: ${message}`));
+            ws.send((`You said: ${message}`));
         },
 
         drain(ws) {

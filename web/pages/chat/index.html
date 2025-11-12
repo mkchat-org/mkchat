@@ -11,7 +11,7 @@
 <body>
     <div id="root">
         <div id="sidebar">
-            <span id="sidebar-room-banner">#mkchatapp/main</span>
+            <span id="sidebar-room-banner">#main</span>
             <div id="sidebar-room-users">
                 <div>
                     <img src="https://api.dicebear.com/9.x/notionists-neutral/svg?seed=0c0c4d5e-5b09---{}&amp;backgroundColor=transparent" alt="avatar">
@@ -31,23 +31,23 @@
             <div id="messagebox"></div>
             <div id="messagecompose">
                 <!--<reply-banner></reply-banner>-->
+                <div id="messagemodifiers">
+                    <button type="button">
+                        <icon-command></icon-command>
+                    </button>
+                    <button type="button">
+                        <icon-puzzle-piece></icon-puzzle-piece>
+                    </button>
+                    <button type="button">
+                        <icon-folder></icon-folder>
+                    </button>
+                    <button type="button">
+                        <icon-smiley></icon-smiley>
+                    </button>
+                </div>
                 <form>
-                    <button type="button">
-                        <span>⌘</span>
-                    </button>
-                    <button type="button">
-                        <span>🕹</span>
-                    </button>
-                    <button type="button">
-                        <span>📂</span>
-                    </button>
-                    <button type="button">
-                        <span>☻</span>
-                    </button>
-                    <input type="text" name="message-text" placeholder="Type a message..." />
-                    <button type="submit">
-                        <span>➤</span>
-                    </button>
+                    <input type="text" name="message-text" placeholder="Message #main" autocomplete="off" />
+                    <button type="submit"><icon-paper-plane-right></icon-paper-plane-right></button>
                 </form>
             </div>
         </div>
@@ -55,5 +55,6 @@
             <upload-zone></upload-zone>
         </div>-->
     </div>
+    <emoji-picker></emoji-picker>
 </body>
 </html>

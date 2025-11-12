@@ -1,5 +1,12 @@
-import { decode } from "@std/msgpack";
-const ws = new WebSocket("ws://localhost:3001?alias=nick");
+import { ChatClient } from "../../ChatClient";
+const ws = new ChatClient("ws://localhost:3001?alias=nick");
+const ws2 = new ChatClient("wss://mkchat.net");
+import "../../components/icons/Command";
+import "../../components/icons/Folder";
+import "../../components/icons/PaperPlaneRight";
+import "../../components/icons/PuzzlePiece";
+import "../../components/icons/Smiley";
+import { EmojiPicker } from "../../components/EmojiPicker";
 
 /**
  *
